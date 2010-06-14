@@ -1,0 +1,7 @@
+{
+"name" : "VBX Intelligence",
+"author" : "beans@beanserver.net",
+"description" : "Framework for realtime display of contextual business intelligence",
+"url" : "http://openvbx.org",
+"type" : "voice"
+}

@@ -1,0 +1,13 @@
+{
+    "name" : "VBX Intelligence",
+    "author" : "blevine@applicorp.com",
+    "description" : "Heads up display for business intelligence",
+    "url" : "http://openvbx.org",
+    "type" : "voice",
+ 	"links" : [{
+                    "menu" : "VBX-Intelligence",
+                    "url" : "vbx-intelligence-dashboard",
+                    "script" : "pages/dashboard.php",
+                    "label" : "Intel Dashboard"
+            }]
+}
