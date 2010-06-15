@@ -6,6 +6,9 @@
 	when a call is clicked, pass the call data to each widget and display
 */
 
+<script type="text/javascript" src="<?php echo base_url() ?>/assets/j/frameworks/jquery-1.4.2.js"></script>
+<script type="text/javascript" src="<?php echo base_url() ?>/assets/j/plugins/jquery.validate.js"></script>
+
 include_once('plugins/vbx-intelligence/applets/vbx-intelligence/widgets.php');
 $intelCalls = (array) PluginStore::get('IntelCalls', array());  
 
