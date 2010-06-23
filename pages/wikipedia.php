@@ -87,6 +87,6 @@ function  titleCase($string)  {
 
 
 ?>
-<div class="gradient-box" style="position:relative; height:300px; width:200px;">
-<iframe src="http://en.wikipedia.org/w/index.php?title=<?= titleCase($call["city"]) ?>,_<?= abbrstate($call["state"]) ?>&printable=yes" width="200" height="300"></iframe>
+<div class="gradient-box" style="position:relative; height:400px; width:200px;">
+<iframe src="http://en.wikipedia.org/w/index.php?title=<?= titleCase($call["city"]) ?>,_<?= abbrstate($call["state"]) ?>&printable=yes" width="200" height="400"></iframe>
 </div>
