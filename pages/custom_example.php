@@ -3,11 +3,15 @@
 <?
 /*
 	connect to an external database or web service and perform your own lookup here 
-	You have all the call data available in associative array $call
+	associative array $call contains  data about the incoming call
+	$call["caller"] is their telephone number
 	You can key lookups  by "caller", the incoming phone number, or any of the following:
 	called caller city date lat lon sid state time
 */
-
+	
+	//real call data
+	$city = $call["city"];
+	$number = $call["caller"];
 	//fake some data that we should have looked up from an external system
 	$first = array("Joe", "Jane", "Debby", "Kyle", "Sugih");
 	$last = array("Sample", "Example", "Doe", "Smith", "Hollingsworth");
@@ -17,7 +21,7 @@
 	$notes_rand = array_rand($notes, 1);
 ?>
 
-<div class="gradient-box"><h1>Customer Profile</h1>
+<div class="gradient-box"  style="position:relative;"><h1>Customer Profile</h1>
 <table>
 	<tr>
 		<td colspan="2">&nbsp;</td>
@@ -32,7 +36,11 @@
 	</tr>
 	<tr>
 		<td>Phone:</td>
-		<td><?= $call["caller"] ?></td>
+		<td>(<?= substr($number,0,3) ?>) <?= substr($number,3,3) ?>-<?= substr($number,6,4) ?></td>
+	</tr>
+	<tr>
+		<td>City:</td>
+		<td><?= $city ?></td>
 	</tr>
 	<tr>
 		<td colspan="2">&nbsp;</td>

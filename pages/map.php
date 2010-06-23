@@ -1,6 +1,7 @@
-<? $call = json_decode(stripslashes($_REQUEST['call']), true); ?>
-<div class="gradient-box" style="position:relative; height:400px; width:400px;">
-	<div id='myMap' style="position:absolute; width:400px; height:400px;"></div>
+<? 
+$call = json_decode(stripslashes($_REQUEST['call']), true); ?>
+<div class="gradient-box" style="position:relative; height:400px; width:300px;">
+	<div id='myMap' style="position:absolute; width:300px; height:400px;"></div>
 	<script>
 		var map = new VEMap('myMap');
 		var showctrl=false;

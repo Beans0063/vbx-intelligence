@@ -27,33 +27,23 @@ $called =  isset($_REQUEST['Called'])? $_REQUEST['Called'] : '';
 $CallGuid = isset($_REQUEST['CallGuid'])? $_REQUEST['CallGuid'] : '';
 $lat="";
 $lon="";
+$err="";
 
 try{
 	// Geocode the city and state
-	$sPathToCurl        = 'curl' ; 
-	$sPostToURL         = 'http://api.local.yahoo.com/MapsService/V1/geocode' ; 
-	$aPostData          = array() ;  // This will hold the fieldname/value pairs 
-	$sEncapChar         = '"'; 
-	$aData['appid']     = 'mapbuilder.net'; 
-	$sAddress = $city . " " . $state;
-	foreach($aData as $sVar => $sValue) 
-	{ 
-		$sValue = str_replace($sEncapChar, '*', $sValue); // Double quotes are removed from the data and replaced with '*'.  except for the encapsulation character 
-	   	$aPostData[] = urlencode($sVar) . '=' . urlencode($sValue); //URLencode the key and value and make them a name/value pair 
-    
-	} 
-	$sPostData = implode('&', $aPostData); //Seperate by & each of the name/value pairs 
-	$sPostData .= '&location=' . rawurlencode($sAddress); //Append Location 
-	//Execute curl command 
-	$sPostString = $sPathToCurl . ' -s  --get --data ' . escapeshellarg($sPostData) . ' ' . escapeshellarg($sPostToURL); 
-	$sResponse = shell_exec($sPostString); 
+	$sAddress = $city . "%20" . $state;
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, "http://api.local.yahoo.com/MapsService/V1/geocode?appid=mapbuilder.net&location=$sAddress");
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	$sResponse = curl_exec($ch);
+
 	$xml = new SimpleXMLElement($sResponse);
 	if ($xml->Result[0]!=null){
 		$lat = $xml->Result[0]->Latitude;
 		$lon =  $xml->Result[0]->Longitude;
 	}
 } 	catch(Exception $e) {
-	$lat = "$e";
+	$err = $err . " $e";
 }
 
 
@@ -69,6 +59,7 @@ $callInfo[ "lat" ] = (string)$lat;
 $callInfo[ "lon" ] = (string)$lon;
 $callInfo[ "time" ] =  time();
 $callInfo[ "date" ] =  getdate();
+$callInfo[ "err" ] =  $err;
 
 // append our array of call props to to a plugin-managed variable
 $intelCalls = PluginStore::get('IntelCalls', array());  // get our array of calls or default to new array if undefined
