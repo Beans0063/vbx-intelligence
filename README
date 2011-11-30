@@ -1,4 +1,7 @@
 http://www.openvbx.org
+
+PLEASE NOTE THIS PLUGIN IS NOT COMPATIBLE WITH RECENT RELEASES OF OPENVBX (want to fork and update it?)
+
 vbx-intelligence plugin - Framework for realtime display of contextual business intelligence
 Customize with your own logic to display relevant information, presented in real time as the calls come in.
 You will need to add vbx-intelligence to a call flow to allow it to begin collecting information.
